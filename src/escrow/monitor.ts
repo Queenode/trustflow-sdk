@@ -33,4 +33,13 @@ export class EscrowMonitor {
   stopPolling(): void {
     clearInterval(this.pollingInterval);
   }
+
+  unsubscribeAll(): void {
+    this.handlers.clear();
+  }
+
+  destroy(): void {
+    this.stopPolling();
+    this.unsubscribeAll();
+  }
 }

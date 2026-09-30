@@ -19,4 +19,23 @@ describe('EscrowMonitor', () => {
     monitor.off('escrow.created', h);
     expect((monitor as any).handlers.get('escrow.created')?.size).toBe(0);
   });
+
+  it('unsubscribes all handlers with unsubscribeAll()', () => {
+    const monitor = new EscrowMonitor();
+    monitor.on('escrow.created', () => {});
+    monitor.on('escrow.released', () => {});
+    monitor.unsubscribeAll();
+    expect((monitor as any).handlers.size).toBe(0);
+  });
+
+  it('stops polling and clears handlers on destroy()', () => {
+    const monitor = new EscrowMonitor();
+    const clearIntervalSpy = jest.spyOn(global, 'clearInterval');
+    monitor.startPolling(5000, async () => []);
+    monitor.on('escrow.created', () => {});
+    monitor.destroy();
+    expect((monitor as any).handlers.size).toBe(0);
+    expect(clearIntervalSpy).toHaveBeenCalledWith((monitor as any).pollingInterval);
+    clearIntervalSpy.mockRestore();
+  });
 });
