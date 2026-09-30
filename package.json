@@ -33,8 +33,19 @@
     "format:check": "prettier --check \"src/**/*.ts\"",
     "docs": "typedoc",
     "docs:watch": "typedoc --watch",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "size": "size-limit"
   },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "250 kB"
+    },
+    {
+      "path": "dist/index.mjs",
+      "limit": "250 kB"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "@stellar/stellar-sdk": "^15.1.0",
@@ -52,6 +63,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@size-limit/preset-small-lib": "^14.1.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.9.3",
     "@types/react": "^18.2.0",
@@ -64,6 +76,7 @@
     "jest": "^30.4.2",
     "prettier": "^3.8.4",
     "react": "^18.2.0",
+    "size-limit": "^14.1.0",
     "ts-jest": "^29.4.11",
     "tsup": "^8.5.1",
     "typedoc": "^0.28.20",
