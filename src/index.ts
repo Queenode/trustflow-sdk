@@ -38,6 +38,9 @@ export {
   CreateEscrowSchema,
   ReleaseEscrowSchema,
   DisputeEscrowSchema,
+  ClaimEscrowSchema,
+  FundEscrowSchema,
+  VoteSchema,
   ClientConfigSchema,
 } from './schemas';
-export type { CreateEscrowInput, ReleaseEscrowInput, DisputeEscrowInput } from './schemas';
+export type { CreateEscrowInput, ReleaseEscrowInput, DisputeEscrowInput, ClaimEscrowInput, FundEscrowInput, VoteInput } from './schemas';

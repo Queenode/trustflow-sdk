@@ -54,7 +54,7 @@ describe('JurorClient.vote', () => {
 
     expect(result.ok).toBe(false);
     if (!result.ok) {
-      expect(result.error).toMatch(/disputeId/);
+      expect(result.error).toMatch(/Validation failed.*disputeId/i);
     }
   });
 
@@ -68,7 +68,7 @@ describe('JurorClient.vote', () => {
 
     expect(result.ok).toBe(false);
     if (!result.ok) {
-      expect(result.error).toMatch(/jurorAddress/);
+      expect(result.error).toMatch(/Validation failed.*jurorAddress/i);
     }
   });
 
@@ -97,7 +97,7 @@ describe('JurorClient.vote', () => {
 
     expect(result.ok).toBe(false);
     if (!result.ok) {
-      expect(result.error).toMatch(/ciphertext/);
+      expect(result.error).toMatch(/Validation failed.*vote/i);
     }
   });
 
@@ -111,7 +111,7 @@ describe('JurorClient.vote', () => {
 
     expect(result.ok).toBe(false);
     if (!result.ok) {
-      expect(result.error).toMatch(/ciphertext/);
+      expect(result.error).toMatch(/Validation failed.*vote/i);
     }
   });
 });
